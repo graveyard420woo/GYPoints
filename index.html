@@ -130,8 +130,9 @@
 		}
 		
 		function playRandomSound(){
-		var soundnum = getRandomIntInclusive(110, 209);
+		var soundnum = getRandomIntInclusive(10, 209);
 		var audio = new Audio(soundnum+'-Random Bit Crate_Feb2014.wav');
+		audio.volume = .5;
 		audio.play();
 		}
 
