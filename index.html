@@ -40,7 +40,7 @@
     </style>
 </head>
 <div id="bigcontainer">
-<body onClick="audio.play();">
+<body onClick="playRandomSound();">
     <p>This example demonstrates how to connect to, create subscriptions and recieve data from EventSub WebSockets</p>
     <p>It will just "dumb log" an EventSub notification.</p>
     <p>It'll use Implicit auth to obtain a token to use</p>
@@ -103,11 +103,11 @@
     <script type="text/javascript">
         // These are set for the GitHub Pages Example
         // Substitute as needed
-		var soundnum = getRandomIntInclusive(110, 209);
+		//var soundnum = getRandomIntInclusive(110, 209);
 		var tempoAniPadrao = 2000;
-		var audio = new Audio(soundnum+'-Random Bit Crate_Feb2014.wav');
+		//var audio = new Audio(soundnum+'-Random Bit Crate_Feb2014.wav');
 		//var audio = new Audio('soundfx.wav');
-		audio.volume = .9;
+		audio.volume = .5;
 		cdPadrao = 10;
 		cdUser = {};
 		
@@ -130,9 +130,9 @@
 		}
 		
 		function playRandomSound(){
-		//var soundnum = getRandomIntInclusive(10, 10240);
-		//var audio = new Audio('file://D:/GRAVEYARD/Assets/sounds/Bit Crate Samples/'+soundnum+'-Random Bit Crate_Feb2014.wav');
-		//audio.play();
+		var soundnum = getRandomIntInclusive(110, 209);
+		var audio = new Audio(soundnum+'-Random Bit Crate_Feb2014.wav');
+		audio.play();
 		}
 
         document.getElementById('authorize').setAttribute('href', 'https://id.twitch.tv/oauth2/authorize?client_id=' + client_id + '&redirect_uri=' + encodeURIComponent(redirect) + '&response_type=token&scope=channel:read:redemptions');
@@ -212,7 +212,8 @@
 						document.getElementById("nome").textContent = `${user_login}`
                     	document.getElementById("acao").style.color = "#fff"
 						document.getElementById("acao").textContent = `${reward.title}`
-						audio.play();
+						//audio.play();
+						playRandomSound();
 						playAnimation(0);
 						//playAnimation(1);
 						
