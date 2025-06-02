@@ -11,9 +11,6 @@ body {
 }
 
 
-#logo{
-    height: 250px;
-}
 #login {
     text-align: center;
     min-height: 100vh;
@@ -24,193 +21,6 @@ body {
     background-position: center;
     display: flex;
 }
-#fail{
-    text-align: center;
-    min-height: 100vh;
-    height: auto;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-}
-
-#cont-box{
-    margin-top: 23px;
-}
-
-#conteiner {
-    display: inline-block;
-    width: 400px;
-    text-align: center;
-    align-self: center;
-    margin: 0 auto;
-    padding: 20px;
-    
-    padding-bottom: 150px;
-}
-
-#dx-avatar{
-    height: 25px;
-    border-radius: 35px;
-    border-style: solid;
-    border-color: #fff;
-    margin-left: .5px;
-}
-
-#dx-nome{ 
-    color: #fff;
-    position: relative;
-    top: 2px;
-    font-size: 19px;
-    font-family: Lato;
-    font-weight: 500;
-    margin-left: 2px;
-
-}
-#dx-cont{
-    display: inline-flex;
-    background-color: #0d5c67;
-    padding: 4px;
-    padding-right: 19px;
-    border-radius: 38px;
-    transition: all .1s ease-in-out ;
-}
-#dx-cont:link{
-    text-decoration: none;
-}
-#dx-cont:hover{
-    background-color: #07404d;
-    transform: scale(1.05);
-    box-shadow: 0px 4px 10px #0000002b;
-}
-
-.dx-created{
-    display: block;
-    color: #fff;
-    font-size: 18px;
-    font-family: Lato;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-
-#componets {
-    background-color: #09131CCC;
-    border-radius: 37px;
-    margin-top: 7px;
-    padding: 35px;
-    padding-top: 13px;
-    backdrop-filter: blur(10px);
-}
-
-
-.login-box{
-    display: inline-table;
-    padding: 4px 40px 4px 40px;
-    border-radius: 10px;
-    transition: all .1s ease-in-out ;
-    background-color: #9147ff;
-    margin-bottom: 10px;
-}   
-.login-box:hover{
-    background-color: #4f24b8;
-    transform: scale(1.05);
-    box-shadow: 0px 4px 10px #0000002b;
-    
-}
-.login-box:link{
-    text-decoration: none;
-}
-
-
-
-
-#paypal-box{
-    display: inline-table;
-    width: 182px;
-    padding: 4px;
-    border-radius: 10px;
-    transition: all .1s ease-in-out ;
-    background-color: #186198;
-    margin-bottom: 10px;
-}   
-#paypal-box:hover{
-    background-color: #134481;
-    transform: scale(1.05);
-    box-shadow: 0px 4px 10px #0000002b;
-    
-}
-#paypal-box:link{
-    text-decoration: none;
-}
-
-#paypal-logo{
-    height: 27px;
-}
-
-
-
-
-
-
-#twitch-text{
-    color: #fff;
-    margin-left: 7px;
-    margin-right: 11px;
-    font-size: 24px;
-    font-family: Lato;
-    font-weight: 300;
-}
-
-
-.text{
-    color: #fff;
-    font-size: 35px;
-    font-family: Lato;
-    font-weight: 300;
-    display: block;
-}
-
-.description{
-    display: block;
-    color: #fff;
-    font-size: 16px;
-    font-family: Lato;
-    font-weight: 300;
-    white-space: pre-line;
-    line-height: 19px;
-}
-.link{
-    color: #ba7dff;
-}
-
-.paypal-description{
-    display: block;
-    color: #fff;
-    font-size: 14px;
-    line-height: 19px;
-    margin-bottom: 8px;
-    font-family: Lato;
-    font-weight: 300;
-    white-space: pre-line;
-}
-
-#title{
-    color: #fff;
-    font-size: 40px;
-    font-family: Lato;
-    font-weight: 400;
-}
-
-
-
-
-#twitch-logo{
-    float: left;
-    position: relative;
-    top: 2px;
-    height: 27px;
-}
-
-
 
 #animation {
 	font-family: "Francois One", sans-serif;
@@ -233,15 +43,28 @@ body {
     z-index: -1;
     /* -40 */
     color: white;
-    border-radius: 15px;
+    border-radius: 200px 200px 200px 40px;
+	box-shadow: 0 0 32px 32px #ec008c;
     padding: 20px;
     padding-top:5px;
     margin: 0px;
-    background-color: #EB00A5;
+    background-color: #2e1263;
+	border: 14px solid #2e1263;
     transform-origin: top;
 	font-family: "Francois One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+	font-weight: 400;
+	font-style: normal;
+	font-color: #FFFFFF;
+	background-image: url("gravestoneknockout_alertbg.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 300px;
+	min-width: 270px;
+	transition: background-color 1s ease-in;
+}
+#img {
+	transition: src 1s ease-in;
+	border-radius: 2px 2px 2px 2px;
 }
 
 #nome {
@@ -252,6 +75,7 @@ body {
 	font-family: "Francois One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  transition: src 1s ease-in;
 }
 
 #acao {
@@ -266,6 +90,7 @@ body {
 	font-family: "Francois One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  transition: src 1s ease-in;
 }
 
 
@@ -282,6 +107,14 @@ body {
 
 .boxAniOut {
     animation: boxOut var(--aniOut) ease-in-out forwards;
+}
+
+.confAniOut {
+    animation: confOut var(--aniOut) ease-in-out forwards;
+}
+
+.confAniIn {
+    animation: confIn var(--aniOut) ease-in-out forwards;
 }
 
 @keyframes posIn {
@@ -332,5 +165,27 @@ body {
     }
     100% {
         transform: scaleX(0) scaleY(.6);
+    }
+}
+
+@keyframes confOut {
+    56% {
+        transform: scaleX(1) scaleY(1);
+		opacity: 50;
+    }
+    100% {
+        transform: scaleX(2) scaleY(2);
+		opacity: 0;
+		
+    }
+@keyframes confIn {
+    0% {
+        transform: scaleX(0) scaleY(0);
+		opacity: 0;
+    }
+    20% {
+        transform: scaleX(1) scaleY(1);
+		opacity: 100;
+		
     }
 }
