@@ -122,8 +122,9 @@
 
 			<div id="centercontentbox"><img id="gy-logo" style="float:left; margin-left:-15px;" src="gypoints.png">
                     <span class="description-name text"><a class="logofollow-box" href="https://www.twitch.tv/graveyard420woo" target="_blank"><img id="gy-logo" src="gy.png"></a>Description:</span>
-                    <span class="description-main description">This is a tool that shows notifications for Twitch channel points reward redeems! It was built as an update to other tools that have stopped working. rip.<br>
-It will automatically receive any reward's name, background color and image, and display a pop-up alert notification when it's redeemed on your stream.<br>
+                    <span class="description-main description">This is a tool that shows notifications for Twitch channel points reward redeems!<br>
+It will automatically receive any reward's name, background color and image, and display a pop-up alert notification when it's redeemed on your stream. This unpublished version plays random sounds, FUN!<br>
+
 Simply add it as a browser source by copying the URL after you connect your twitch account!</span>
 <br>
                     <a id="authorize" class="login-box" target="">
@@ -158,7 +159,6 @@ Simply add it as a browser source by copying the URL after you connect your twit
     <script type="text/javascript" src="eventsub.js"></script>
     <script type="text/javascript">
 	
-		var soundnum = getRandomIntInclusive(10, 1009);
         var client_id = 'x0mvw507bahn3c61z73x5psrvntcno';
         var redirect = 'https://graveyard420woo.github.io/GYPoints/';
         var access_token = '';
@@ -166,7 +166,6 @@ Simply add it as a browser source by copying the URL after you connect your twit
         var session_id = '';
         var my_user_id = '';
 		var redeemUserColor = '';
-		var audio = new Audio('https://graveyard420woo.github.io/GYPoints/'+soundnum+'-Random Bit Crate_Feb2014.wav'); //grab a random audio clip in soundnum range
 								
 		document.getElementById('authorize').setAttribute('href', 'https://id.twitch.tv/oauth2/authorize?client_id=' + client_id + '&redirect_uri=' + encodeURIComponent(redirect) + '&response_type=token&scope=channel:manage:redemptions');
 
@@ -185,16 +184,16 @@ Simply add it as a browser source by copying the URL after you connect your twit
 		  return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
 		
+		function playRandomSound(){
+			var soundnum = getRandomIntInclusive(10, 1009);
+			var audio = new Audio(soundnum+'-Random Bit Crate_Feb2014.wav');
+			audio.volume = .4;
+			audio.play();
+		}
+		
 		function getUrlParameter(name) {
 		  const urlParams = new URLSearchParams(window.location.search);
 		  return urlParams.get(name);
-		}
-		
-		function playTheSound(){
-		//var audio = new Audio('soundfx.mp3');
-		//var audio = new Audio('https://graveyard420woo.github.io/GYPoints/'+soundnum+'-Random Bit Crate_Feb2014.wav'); //grab a random audio clip in soundnum range
-		audio.play();
-		audio.volume = .6;
 		}
 
         function log(message) {
@@ -265,8 +264,6 @@ Simply add it as a browser source by copying the URL after you connect your twit
                     	document.getElementById("acao").style.color = "#fff"
 						document.getElementById("acao").textContent = `${reward.title}`
 						
-						//playTheSound();
-						//playAnimation(0);											
 					});
 				})	
                 .catch(err => {
@@ -370,7 +367,7 @@ Simply add it as a browser source by copying the URL after you connect your twit
 					document.getElementById("box").style.backgroundColor = '#'+paramValue
 					
 					
-					playTheSound();
+					playRandomSound();
 					playAnimation(0);
                 })
                 .catch(err => {
