@@ -2,14 +2,16 @@
     font-family: "Francois One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  color:#fff;
 }
-a {
-    color: rgb(169, 112, 255);
-}
+
 table {
     width: 100%;
     border-top: 1px solid rgb(239, 239, 241);
     border-left: 1px solid rgb(239, 239, 241);
+}
+body{
+	text-align:center;
 }
 th, td {
     border-right: 1px solid rgb(239, 239, 241);
@@ -45,17 +47,6 @@ input[type="button"], button {
     display: block;
 }
 
-#authorize,
-#authorize_public,
-#authorize_email {
-    background-image: url('twitch_login.png');
-    height: 32px;
-    display: block;
-    padding-left: 180px;
-    background-repeat: no-repeat;
-    line-height: 32px;
-}
-
 .disableit {
     position: relative;
 }
@@ -67,4 +58,194 @@ input[type="button"], button {
     right: 0px;
     bottom: 0px;
     background: rgba(0,0,0,0.5);
+}
+
+
+
+
+#dx-avatar{
+    height: 25px;
+    border-radius: 35px;
+    border-style: solid;
+    border-color: #fff;
+    margin-left: .5px;
+}
+
+#dx-nome{ 
+    color: #fff;
+    position: relative;
+    top: 2px;
+    margin-left: 2px;
+
+}
+#dx-cont{
+    display: inline-flex;
+    background-color: #0d5c67;
+    padding: 4px;
+    padding-right: 19px;
+    border-radius: 38px;
+    transition: all .1s ease-in-out ;
+}
+#dx-cont:link{
+    text-decoration: none;
+}
+#dx-cont:hover{
+    background-color: #07404d;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px #0000002b;
+}
+
+.dx-created{
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+
+.login-box{
+    display: inline-table;
+    padding: 4px 40px 4px 40px;
+    border-radius: 7px 7px 17px 7px;
+    transition: all .1s ease-in-out ;
+    background-color: #9147ff;
+	margin-top: 10px;
+    margin-bottom: 10px;
+	height: 36px;
+}   
+.login-box:hover{
+    background-color: #4f24b8;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px #0000002b;
+    
+}
+.login-box:link{
+    text-decoration: none;
+}
+
+.logofollow-box{
+    display: inline-table;
+    transition: all .1s ease-in-out ;
+    background: none;
+}   
+.logofollow-box:hover{
+    transform: scale(1.05);    
+}
+.logofollow-box:link{
+    text-decoration: none;
+}
+
+
+.follow-box{
+    display: inline-table;
+    padding: 4px 40px 4px 40px;
+    border-radius: 7px 7px 17px 7px;
+    transition: all .1s ease-in-out ;
+    background-color: #4b0d62;
+	margin-top: 10px;
+    margin-bottom: 10px;
+	height: 36px;
+}   
+.follow-box:hover{
+    background-color: #9c2bc6;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px #0000002b;
+    
+}
+.follow-box:link{
+    text-decoration: none;
+}
+
+.paypal-box{
+    display: inline-table;
+    padding: 4px 40px 4px 40px;
+    border-radius: 7px 7px 17px 7px;
+    transition: all .1s ease-in-out ;
+    background-color: #00457C;
+	margin-top: 10px;
+    margin-bottom: 10px;
+	height: 36px;
+}   
+.paypal-box:hover{
+    background-color: #2ca1ff;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px #0000002b;
+    
+}
+.paypal-box:link{
+    text-decoration: none;
+}
+
+#paypal-text{
+    color: #fff;
+    margin-left: 17px;
+    margin-right: 11px;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+
+#twitch-text{
+    color: #fff;
+    margin-left: 7px;
+    margin-right: 11px;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+#gy-text{
+    color: #fff;
+    margin-left: 7px;
+    margin-right: 11px;
+    font-size: 19px;
+    font-weight: 300;
+}
+
+
+.text{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 300;
+    display: block;
+}
+
+.description{
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    white-space: pre-line;
+    line-height: 19px;
+}
+.link{
+    color: #ba7dff;
+}
+
+.paypal-description{
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 8px;
+    white-space: pre-line;
+}
+
+#title{
+    color: #fff;
+    font-size: 40px;
+}
+
+#gy-logo{
+    position: relative;
+	margin-top: 5px;
+	margin-left: -10px;
+	margin-right: 10px;
+    height: 50px;
+}
+
+#twitch-logo{
+    float: left;
+    position: relative;
+    top: 2px;
+    height: 27px;
 }
