@@ -37,69 +37,31 @@
 		.confetti-wrapper {
 		  position: fixed;
 			top: 0;
-			margin-left: 35%;
-		  width: 30%;
+			left: 0;
+		  width: 100%;
 		  height: 100%;
-		  pointer-events: none; /* Prevent interaction */
+		  pointer-events: none;
 		  overflow: hidden;
-		  z-index: 100;
-		  padding-top: -50%;	  
-		  object-fit: cover;
+		  z-index: 100;	  
 		}
 		
 		.confetti-piece {
 		  position: absolute;
-		  width: 18px;
-		  height: 23px;
-		  background: var(--confetti-color, red);
-		  opacity: 0.9;
-		  animation: confetti-fall var(--fall-duration, 3s) linear;
-		  z-index: 100;
-		  transition: background 1s ease-in;
+          /* Width and height will be set by JS */
+		  top: -5%; /* Start above the screen */
+		  opacity: 0;
+		  animation: confetti-fall ease-out forwards;
 		}
-		/* Randomize confetti properties */
-		.confetti-piece:nth-child(1) {
-		  left: 10%;
-		  --confetti-color: #ff6347;
-		  --fall-duration: 3s;
-		}
-		.confetti-piece:nth-child(2) {
-		  left: 25%;
-		  --confetti-color: #ffa500;
-		  --fall-duration: 4s;
-		}
-		.confetti-piece:nth-child(3) {
-		  left: 40%;
-		  --confetti-color: #32cd32;
-		  --fall-duration: 3.5s;
-		}
-		.confetti-piece:nth-child(4) {
-		  left: 60%;
-		  --confetti-color: #1e90ff;
-		  --fall-duration: 2.5s;
-		}
-		.confetti-piece:nth-child(5) {
-		  left: 80%;
-		  --confetti-color: #ff69b4;
-		  --fall-duration: 2s;
-		}
-		.confetti-piece {
-		  clip-path: polygon(50% 30%, 0% 80%, 100% 100%);
-		}
+
 		@keyframes confetti-fall {
 		  0% {
-			transform: translateY(-100%) rotate(0deg);
-			opacity: 0;
-		  }
-		  3% {
-			opacity: 100;
-		  }
-		  74% {
-			opacity: 0;
+			transform: translateY(0) rotateZ(0) rotateY(0);
+			opacity: 1;
 		  }
 		  100% {
-			transform: translateY(100vh) rotate(360deg);
-			opacity: 0;
+            /* Use variables for dynamic end-points */
+			transform: translateY(105vh) rotateZ(var(--rz)) rotateY(var(--ry));
+			opacity: 0.8;
 		  }
 		}
 		#bigcontainer1 {
@@ -446,31 +408,49 @@ function playAnimation(direc) {
     document.getElementById("anchor").removeAttribute("class")
     document.getElementById("box").removeAttribute("class")
 	
-	document.getElementById("confettianimation").innerHTML = '';
-	document.getElementById("confettianimation").classList.add("confetti-wrapper")
+    const confettiWrapper = document.getElementById("confettianimation");
+	confettiWrapper.innerHTML = '';
+	confettiWrapper.classList.add("confetti-wrapper");
 
     void document.getElementById("box").offsetWidth;
 
     if (direc == 0) {
         /* console.log("play in"); */
 		document.getElementById("confettianimation").style.display = "block";
-		document.getElementById("confettianimation").style.opacity = "80";
         document.getElementById("anchor").classList.add("anchorAniIn")
         document.getElementById("box").classList.add("boxAniIn")
 		
-		//document.getElementById("confettianimation").classList.add("confAniIn")
-		
-		const confettiWrapper = document.querySelector('.confetti-wrapper');
-		// Generate confetti
-		for (let i = 0; i < 50; i++) {
+        // --- Confetti Generation Logic ---
+        const confettiCount = 150;
+        // Generate a color palette from the user's redeem color for a more professional look
+        const baseColor = redeemUserColor || '#ff0000';
+        const colors = [
+            baseColor,
+            // Function to lighten or darken the base color
+            pSBC(0.4, baseColor),
+            pSBC(-0.4, baseColor)
+        ];
+
+		for (let i = 0; i < confettiCount; i++) {
 		  const confetti = document.createElement('div');
 		  confetti.classList.add('confetti-piece');
+          
+          // Set random properties for each piece
 		  confetti.style.left = `${Math.random() * 100}%`;
-		  confetti.style.top = '30%';
-		  confetti.style.display = 'block';
-		  confetti.style.setProperty('--fall-duration', `${Math.random() * 2 + 4}s`);
-		  confetti.style.setProperty('--confetti-color', redeemUserColor);
-		  log('confetti color is '+redeemUserColor);
+          confetti.style.width = `${Math.random() * 12 + 8}px`; // width from 8px to 20px
+          confetti.style.height = `${Math.random() * 7 + 5}px`; // height from 5px to 12px
+		  confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.opacity = '0';
+          
+          // Animation properties
+          const duration = Math.random() * 3 + 4; // duration from 4s to 7s
+          const delay = Math.random() * 1.5; // delay up to 1.5s
+          confetti.style.animation = `confetti-fall ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s forwards`;
+
+          // Set CSS variables for the keyframe animation
+          confetti.style.setProperty('--rz', `${Math.random() * 1080 - 540}deg`); // Z-axis rotation
+          confetti.style.setProperty('--ry', `${Math.random() * 1080 - 540}deg`); // Y-axis rotation for flutter effect
+
 		  confettiWrapper.appendChild(confetti);
 		}
 		
@@ -480,24 +460,49 @@ function playAnimation(direc) {
         document.getElementById("box").classList.add("boxAniOut")
     }
 
-timer3=window.setTimeout(
-    function(){
-		document.getElementById("confettianimation").style.display = "none";
-    },3900);
+    // Timer to hide the confetti wrapper after the longest animation could have finished
+    timer3=window.setTimeout(
+        function(){
+            document.getElementById("confettianimation").style.display = "none";
+        }, 8500); // Increased duration to match new confetti timings
 	
-timer2=window.setTimeout(
-    function(){
-        document.getElementById("anchor").classList.add("anchorAniOut")
-        document.getElementById("box").classList.add("boxAniOut")
-    },7000);
+    timer2=window.setTimeout(
+        function(){
+            document.getElementById("anchor").classList.add("anchorAniOut")
+            document.getElementById("box").classList.add("boxAniOut")
+        },7000);
 	
-timer1=window.setTimeout(
-    function(){
-            document.getElementById("anchor").style.display = "none";
-			//document.getElementById("confettianimation").style.display = "none";
-    },8000); 
+    timer1=window.setTimeout(
+        function(){
+                document.getElementById("anchor").style.display = "none";
+        },8000); 
 }
-		
+
+// Helper function to calculate lighter/darker shades of a color
+const pSBC=(p,c0,c1,l)=>{
+    let r,g,b,P,f,t,h,i=parseInt,m=Math.round,a=typeof(c1)=="string";
+    if(typeof(p)!="number"||p<-1||p>1||typeof(c0)!="string"||(c0[0]!='r'&&c0[0]!='#')||(c1&&!a))return null;
+    if(!this.pSBCr)this.pSBCr=(d)=>{
+        let n=d.length,x={};
+        if(n>9){
+            [r,g,b,a]=d=d.split(","),n=d.length;
+            if(n<3||n>4)return null;
+            x.r=i(r[3]=="a"?r.slice(5):r.slice(4)),x.g=i(g),x.b=i(b),x.a=a?parseFloat(a):-1
+        }else{
+            if(n==8||n==6||n<4)return null;
+            if(n<6)d="#"+d[1]+d[1]+d[2]+d[2]+d[3]+d[3]+(n>4?d[4]+d[4]:"");
+            d=i(d.slice(1),16);
+            if(n==9||n==5)x.r=d>>24&255,x.g=d>>16&255,x.b=d>>8&255,x.a=m((d&255)/0.255)/1000;
+            else x.r=d>>16,x.g=d>>8&255,x.b=d&255,x.a=-1
+        }return x};
+    h=c0.length>9,h=a?c1.length>9?true:c1=="c"?!h:false:h,f=this.pSBCr(c0),P=p<0,t=c1&&c1!="c"?this.pSBCr(c1):P?{r:0,g:0,b:0,a:-1}:{r:255,g:255,b:255,a:-1},p=P?-p:p,P=1-p;
+    if(!f||!t)return null;
+    if(l)r=m(P*f.r+p*t.r),g=m(P*f.g+p*t.g),b=m(P*f.b+p*t.b);
+    else r=m((P*f.r**2+p*t.r**2)**0.5),g=m((P*f.g**2+p*t.g**2)**0.5),b=m((P*f.b**2+p*t.b**2)**0.5);
+    a=f.a,t=t.a,f=a>=0||t>=0,a=f?a<0?t:t<0?a:a*P+t*p:0;
+    if(h)return"rgb"+(f?"a(":"(")+r+","+g+","+b+(f?","+m(a*1000)/1000:"")+")";
+    else return"#"+(4294967296+r*16777216+g*65536+b*256+(f?m(a*255):0)).toString(16).slice(1,f?undefined:-2)
+}	
     </script>
 
 </div></div>
