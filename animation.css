@@ -27,9 +27,9 @@ body {
   font-weight: 400;
   font-style: normal;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 25%;
+    left: 75%;
+    transform: translate(-75%, -75%);
     text-align: center;
 }
 
